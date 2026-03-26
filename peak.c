@@ -1,3 +1,4 @@
+
 //finding the peak element
 #include <stdio.h>
 int main()
@@ -11,28 +12,40 @@ int main()
         printf("Array must have at least two elements.\n");
     else 
 	{
-		int arr[n], peak[n/2];
+		int arr[n], peak[n];
 		printf("Enter the elements of the array:\n");
 		for (i=0; i<n; i++)
 			scanf("%d", &arr[i]);
 		
 		if(arr[0]>arr[1])
-			peak[0]=arr[0];
-		else
-		    peak[0]=arr[1];
-
-        for(i=1;i<n-1;i++)
+		{
+		    pindex++;
+		    peak[0]=arr[0];
+		}
+			
+		for(i=1;i<n-1;i++)
         {
             if (arr[i]>arr[i-1] && arr[i]>arr[i+1])
             {
                 pindex++;
-                arr[i]=peak[pindex];
+                peak[pindex]=arr[i];
             }
         }
         
-        printf("Peak elements:\n");
-        for (i=0;i<=pindex;i++)
-            printf("%d\t",peak[i]);
-        printf("\n");
-	}	    
+        if (arr[n-1]>arr[n-2]) 
+        {
+            pindex++;
+            peak[pindex]=arr[n-1];
+        }
+        if (pindex==-1)
+            printf("No peak elements present.\n");
+        else
+        {
+            printf("Peak elements:\n");
+            for (i=0;i<=pindex;i++)
+                printf("%d\t",peak[i]);
+            printf("\n");
+    	}
+	}
+	
 }
