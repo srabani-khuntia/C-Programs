@@ -1,44 +1,45 @@
+//Bubble sort
 
-//bubble sort using function
 #include <stdio.h>
-int sort_asc(int arr[],int size);
+void bubble_sort(int arr[], int n);
 int main()
-{   
-    int n,i;
+{
+    int i, n;
     
-    printf("Enter number of elements:\n");
-    scanf("%d",&n);
+    printf("Enter number of elements:\n"); 
+    scanf("%d", &n);
     
     int arr[n];
     
-    printf("Enter array elements:\n");
-    for(i=0;i<n;i++)
+    printf("Enter array elements:\n"); 
+    for (i=0;i<n;i++)
         scanf("%d", &arr[i]);
+
+    bubble_sort(arr,n);
+
+    printf("The sorted array is :\n");
     
-    sort_asc(arr,n);
-  
-    printf("Sorted array in ascending order:\n");
     for (i=0;i<n;i++)
         printf("%d\t", arr[i]);
-    
+        
     printf("\n");
+
 }
 
-int sort_asc(int arr[],int size)
+void bubble_sort(int arr[], int n)
 {
-    int i,j,temp;
-    
-    for (i=0;i<size-1;i++)
-	{
-        for (j=0;j<size-i-1;j++) 
-		{
+    int i, j, temp;
+ 
+    for (i=0;i<n-1;i++)
+    {
+        for (j=0;j<n-1-i;j++)
+        {
             if (arr[j]>arr[j+1])
-			{
-                temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+            {
+                temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
             }
         }
-	}
-    return 0;
+    }
 }
